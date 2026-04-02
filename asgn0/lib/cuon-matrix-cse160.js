@@ -44,10 +44,10 @@ class Vector3 {
       * @return this
       */
     add(other) {
-        // Insert your code here.
-        // This function should change this vector (this.elements) and not create a new vector.
+        this.elements[0] += other.elements[0];
+        this.elements[1] += other.elements[1];
+        this.elements[2] += other.elements[2];
 
-        // Don't delete the return statement.
         return this;
     };
 
@@ -56,10 +56,10 @@ class Vector3 {
       * @return this
       */
     sub(other) {
-        // Insert your code here.
-        // This function should change this vector (this.elements) and not create a new vector.
+        this.elements[0] -= other.elements[0];
+        this.elements[1] -= other.elements[1];
+        this.elements[2] -= other.elements[2];
 
-        // Don't delete the return statement.
         return this;
     };
 
@@ -68,10 +68,10 @@ class Vector3 {
       * @return this
       */
     div(scalar) {
-        // Insert your code here.
-        // This function should change this vector (this.elements) and not create a new vector.
+        this.elements[0] /= scalar;
+        this.elements[1] /= scalar;
+        this.elements[2] /= scalar;
 
-        // Don't delete the return statement.
         return this;
     };
 
@@ -80,15 +80,15 @@ class Vector3 {
       * @return this
       */
     mul(scalar) {
-        // Insert your code here.
-        // This function should change this vector (this.elements) and not create a new vector.
+        this.elements[0] *= scalar;
+        this.elements[1] *= scalar;
+        this.elements[2] *= scalar;
 
-        // Don't delete the return statement.
         return this;
     };
 
     /**
-      * Calcualte the dop product between this vector and other.
+      * Calculate the dot product between this vector and other.
       * @return scalar
       */
     static dot(other1, other2) {
@@ -100,7 +100,7 @@ class Vector3 {
     }
 
     /**
-      * Calcualte the cross product between this vector and other.
+      * Calculate the cross product between this vector and other.
       * @return new vector
       */
     static cross(other1, other2) {

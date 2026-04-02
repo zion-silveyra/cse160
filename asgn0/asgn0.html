@@ -22,7 +22,24 @@
         y: <input id="v2y" style="width: 70px">
       </div>
 
-      <input type="button" id="draw" value="draw" style="width: 70px; margin-left: 140px;">
+      <input type="button" id="draw-vectors" value="draw vectors" style="width: 90px; margin-left: 140px;">
+
+      <div>
+        <br>
+        <label for="op" style="margin: 18px;">Operation: </label>
+        <select name="op" id="op">
+          <option value="add">add</option>
+          <option value="sub">sub</option>
+          <option value="mul">mul</option>
+          <option value="div"">div</option>
+        </select>
+        <input type="button" id="draw-operation" value="draw operation" style="margin-left: 8px;">
+      </div>
+    </div>
+
+    <div id="scalar-menu" style="display:none">
+      <label for="scalar-input" style="margin-left:48px; margin-right: 8px;">scalar:</label>
+      <input type="text" id="scalar-input" style="width: 70px;">
     </div>
 
     <script src="asgn0.js"></script>
