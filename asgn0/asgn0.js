@@ -71,6 +71,7 @@ function handleDrawEvent() {
 
 function handleDrawOperationEvent() {
   handleDrawEvent();
+  document.getElementById("result").innerHTML = "";
 
   var v3 = new Vector3();
   var v4 = new Vector3();
@@ -90,14 +91,28 @@ function handleDrawOperationEvent() {
     case 'mul':
       v3.mul(parseFloat(document.getElementById('scalar-input').value));
       v4.mul(parseFloat(document.getElementById('scalar-input').value));
-      drawVector(v3, "green")
-      drawVector(v4, "green")
+      drawVector(v3, "green");
+      drawVector(v4, "green");
       break;
     case 'div':
       v3.div(parseFloat(document.getElementById('scalar-input').value));
       v4.div(parseFloat(document.getElementById('scalar-input').value));
-      drawVector(v3, "green")
-      drawVector(v4, "green")
+      drawVector(v3, "green");
+      drawVector(v4, "green");
+      break;
+    case 'mag':
+      console.log("v1 magnitude: " + v3.magnitude());
+      console.log("v2 magnitude: " + v4.magnitude());
+      document.getElementById("result").innerHTML = (
+        "<strong>v1 magnitude: </strong>" + v3.magnitude().toFixed(2) + "<br>" +
+        "<strong>v2 magnitude: </strong>" + v4.magnitude().toFixed(2)
+      );
+      break;
+    case 'norm':
+      v3.normalize();
+      v4.normalize();
+      drawVector(v3, "green");
+      drawVector(v4, "green");
       break;
   }
 
