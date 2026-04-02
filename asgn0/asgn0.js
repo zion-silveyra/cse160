@@ -104,8 +104,8 @@ function handleDrawOperationEvent() {
       console.log("v1 magnitude: " + v3.magnitude());
       console.log("v2 magnitude: " + v4.magnitude());
       document.getElementById("result").innerHTML = (
-        "<strong>v1 magnitude: </strong>" + v3.magnitude().toFixed(2) + "<br>" +
-        "<strong>v2 magnitude: </strong>" + v4.magnitude().toFixed(2)
+        "<strong>v1 magnitude: </strong>" + v3.magnitude().toFixed(3) + "<br>" +
+        "<strong>v2 magnitude: </strong>" + v4.magnitude().toFixed(3)
       );
       break;
     case 'norm':
@@ -114,8 +114,15 @@ function handleDrawOperationEvent() {
       drawVector(v3, "green");
       drawVector(v4, "green");
       break;
+    case 'angle':
+      console.log("angle between v1, v2: " + angleBetween(v3,v4));
+      document.getElementById("result").innerHTML = (
+        "<strong>angle between v1, v2: </strong>" + angleBetween(v3,v4).toFixed(5) + " rad"
+      );
   }
-
-
-  
 }
+
+function angleBetween(v1, v2) {
+  return Math.acos(Vector3.dot(v1,v2) / (v1.magnitude()*v2.magnitude()));
+}
+  
