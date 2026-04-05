@@ -117,12 +117,22 @@ function handleDrawOperationEvent() {
     case 'angle':
       console.log("angle between v1, v2: " + angleBetween(v3,v4));
       document.getElementById("result").innerHTML = (
-        "<strong>angle between v1, v2: </strong>" + angleBetween(v3,v4).toFixed(5) + " rad"
+        "<strong>angle between v1, v2: </strong>" + angleBetween(v3,v4).toFixed(3) + "&deg;"
       );
+      break;
+    case 'area':
+      console.log("area of triangle formed by v1, v2: " + areaTriangle(v3,v4));
+      document.getElementById("result").innerHTML = (
+        "<strong>area of triangle formed by v1, v2: </strong>" + areaTriangle(v3,v4).toFixed(3)
+      );
+      break;
   }
 }
 
 function angleBetween(v1, v2) {
-  return Math.acos(Vector3.dot(v1,v2) / (v1.magnitude()*v2.magnitude()));
+  return (180/Math.PI)*Math.acos(Vector3.dot(v1,v2) / (v1.magnitude()*v2.magnitude()));
 }
   
+function areaTriangle(v1, v2) {
+  return Vector3.cross(v1,v2).magnitude() / 2;
+}
