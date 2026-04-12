@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Change a point color</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+
+    <div>
+      <input type="button" id="green" value="green">
+      <input type="button" id="red" value="red">
+      <input type="button" id="clear" value="clear">
+    </div>
+    <div>
+      <input type="button" id="point" value="point">
+      <input type="button" id="triangle" value="triangle">
+      <input type="button" id="circle" value="circle">
+    </div>
+    <div>
+      Red: <input type="range" id="redSlide" value="100"><br>
+      Green: <input type="range" id="greenSlide" value="100"><br>
+      Blue: <input type="range" id="blueSlide" value="100"><br>
+      Size: <input type="range" min="5" max="40" value="10"id="sizeSlide"><br>
+      Circle segments: <input type="range" min="5" max="40" value="10"id="segmentsSlide"><br>
+    </div>
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="ColoredPoints.js"></script>
+    <script src="Point.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Circle.js"></script>
+  </body>
+</html>
