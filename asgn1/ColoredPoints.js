@@ -114,8 +114,8 @@ function main() {
 
   gl.clear(gl.COLOR_BUFFER_BIT);
 
-  myT = new CTriangle([10, 10], [1500, 1500], [10, 1400], '77ccf1');
-  myT.render();
+  myQ = new CQuad([400, 200], [500, 400], [450, 700], [200, 600], '77ccf1');
+  myQ.render();
 }
 
 function click(ev) {

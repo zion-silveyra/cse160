@@ -69,3 +69,17 @@ function htmlToRGB(html_color) {
   var b = parseInt(html_color.slice(4, 6), 16)/255;
   return [r,g,b];
 }
+
+class CQuad {
+  constructor(p1,p2,p3,p4,html_color) {
+    this.type="cquad";
+    // Points of the quad are assigned in clockwise order
+    this.triangle1=new CTriangle(p1,p2,p3,html_color);
+    this.triangle2=new CTriangle(p1,p3,p4,html_color);
+
+  }
+  render() {
+    this.triangle1.render();
+    this.triangle2.render();
+  }
+}
