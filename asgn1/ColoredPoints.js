@@ -113,6 +113,9 @@ function main() {
   gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
   gl.clear(gl.COLOR_BUFFER_BIT);
+
+  myT = new CTriangle([10, 10], [1500, 1500], [10, 1400], '77ccf1');
+  myT.render();
 }
 
 function click(ev) {
