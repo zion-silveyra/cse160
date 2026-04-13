@@ -1,6 +1,8 @@
 // This class is used to paint triangles with vertices specified in
 // screen coordinate system (top-left at (0,0)) and hex colors in WebGL
 
+var n_triangles = 0
+
 class CTriangle {
   constructor(p1, p2, p3, html_color) {
     this.type="ctriangle";
@@ -60,6 +62,8 @@ function drawTriangle(vertices) {
   gl.enableVertexAttribArray(a_Position);
 
   gl.drawArrays(gl.TRIANGLES, 0, n);
+
+  n_triangles = n_triangles + 1;
   return n;
 }
 

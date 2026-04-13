@@ -29,6 +29,12 @@ var g_shapesList = [];
 var g_selectedShape = POINT;
 var g_selectedSegments = 10;
 var g_eandi;
+var g_toggleAlbum = false;
+var g_toggleLandscape = true;
+var g_toggleBackground = true;
+var g_toggleForeground = true;
+var g_toggleInitials = true;
+var g_toggleReference = false;
 
 function addHTMLInputActions() {
   document.getElementById("green").onclick = function() {
@@ -38,6 +44,7 @@ function addHTMLInputActions() {
     g_selectedColor = [1.0,0.0,0.0,1.0];
   }
   document.getElementById("clear").onclick = function() {
+    g_toggleAlbum = false;
     g_shapesList = [];
     renderAllShapes();
   }
@@ -64,7 +71,47 @@ function addHTMLInputActions() {
   });
   document.getElementById("segmentsSlide").addEventListener('mouseup', function() {
     g_selectedSegments = this.value;
-    g_eandi.render();
+    if (g_toggleAlbum) {
+      renderAllShapes();
+    }
+  });
+  document.getElementById("drawAlbum").onclick = function() {
+    g_toggleAlbum=true;
+    g_shapesList.push(g_eandi);
+    renderAllShapes();
+  }
+  document.getElementById("drawLandscape").addEventListener('change', function() {
+    g_toggleLandscape = !g_toggleLandscape;
+    if (g_toggleAlbum) {
+      renderAllShapes();
+    }
+  });
+  document.getElementById("drawBackground").addEventListener('change', function() {
+    g_toggleBackground = !g_toggleBackground;
+    if (g_toggleAlbum) {
+      renderAllShapes();
+    }
+  });
+  document.getElementById("drawForeground").addEventListener('change', function() {
+    g_toggleForeground = !g_toggleForeground;
+    if (g_toggleAlbum) {
+      renderAllShapes();
+    }
+  });
+  document.getElementById("drawInitials").addEventListener('change', function() {
+    g_toggleInitials = !g_toggleInitials;
+    if (g_toggleAlbum) {
+      renderAllShapes();
+    }
+  });
+  document.getElementById("referenceImage").addEventListener('click', function() {
+    g_toggleReference = !g_toggleReference;
+    if (g_toggleReference) {
+      document.getElementById("emergency_and_i").style = 'display: flexbox; width: 400px; height: 400px';
+    }
+    else {
+      document.getElementById("emergency_and_i").style = 'display: none';
+    }
   });
 }
 
@@ -117,10 +164,11 @@ function main() {
   gl.clear(gl.COLOR_BUFFER_BIT);
 
   g_eandi = new EmergencyAndI();
-  g_eandi.render();
+  //g_eandi.render();
 }
 
 function click(ev) {
+  //g_toggleAlbum = false;
   [x,y] = getEventCoordinatesToGL(ev)
   let point;
   if (g_selectedShape == POINT) {

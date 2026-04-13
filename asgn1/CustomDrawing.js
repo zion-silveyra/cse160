@@ -103,25 +103,53 @@ class EmergencyAndI {
 
       new CCircle([1220,285], 11.0, '231f20'),
       new CCircle([1380,310], 20.0, '231f20'),
+    ];
+    this.INITIALS = [
+      new CQuad([1330,1450],[1360,1450],[1360,1460],[1330,1460],'4d2b34'),
+      new CQuad([1348,1459],[1359,1459],[1338,1489],[1329,1489],'4d2b34'),
+      new CQuad([1330,1490],[1360,1490],[1360,1499],[1330,1499],'4d2b34'),
 
-      new CQuad([1440,200],[1500,200],[1500,600],[1440,600],'f0f0f0'),//cleanup
+      new CQuad([1380,1450],[1410,1450],[1410,1460],[1380,1460],'4d2b34'),
+      new CQuad([1380,1460],[1388,1460],[1410,1490],[1400,1490],'4d2b34'),
+      new CQuad([1380,1490],[1410,1490],[1410,1499],[1380,1499],'4d2b34'),
     ];
 
   }
   render() {
-    new CQuad([0,0],[1500,0],[1500,1500],[0,1500],'f0f0f0').render();
 
-    for (let i=0;i<this.BG_GRADIENT.length;i=i+1) {
-      this.BG_GRADIENT[i].render();
+    n_triangles = 0;
+
+    if (g_toggleLandscape) {
+      for (let i=0;i<this.BG_GRADIENT.length;i=i+1) {
+        this.BG_GRADIENT[i].render();
+      }
+
+      for (let i=0;i<this.BG_FLOOR.length;i=i+1) {
+        this.BG_FLOOR[i].render();
+      }
     }
-    for (let i=0;i<this.BG_FLOOR.length;i=i+1) {
-      this.BG_FLOOR[i].render();
+    if (g_toggleBackground) {
+      for (let i=0;i<this.BG_OBJECTS.length;i=i+1) {
+        this.BG_OBJECTS[i].render();
+      }
     }
-    for (let i=0;i<this.BG_OBJECTS.length;i=i+1) {
-      this.BG_OBJECTS[i].render();
+    if (g_toggleForeground) {
+      for (let i=0;i<this.FG_SUBJECT.length;i=i+1) {
+        this.FG_SUBJECT[i].render();
+      }
     }
-    for (let i=0;i<this.FG_SUBJECT.length;i=i+1) {
-      this.FG_SUBJECT[i].render();
+    if (g_toggleLandscape) {
+      new CQuad([0,0],[40,0],[40,1500],[0,1500],'f0f0f0').render();
+      new CQuad([0,0],[1500,0],[1500,40],[0,40],'f0f0f0').render();
+      new CQuad([0,1440],[1500,1440],[1500,1500],[0,1500],'f0f0f0').render();
+      new CQuad([1440,0],[1500,0],[1500,1500],[1440,1440],'f0f0f0').render();
     }
+    if (g_toggleInitials) {
+      for (let i=0;i<this.INITIALS.length;i=i+1) {
+        this.INITIALS[i].render();
+      }
+    }
+
+    console.log('drew ' + n_triangles + ' triangles');
   }
 }

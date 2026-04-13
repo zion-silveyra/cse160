@@ -2,14 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Change a point color</title>
+    <title>Assignment 1: Painting Program</title>
   </head>
 
   <body onload="main()">
-    <canvas id="webgl" width="400" height="400">
-    Please use a browser that supports "canvas"
-    </canvas>
-
+    <div>
+      <canvas id="webgl" width="400" height="400">
+      Please use a browser that supports "canvas"
+      </canvas>
+      <img src="https://e.snmc.io/i/600/s/0e429abbef2d669b98ee0013d638a59c/3852658/the-dismemberment-plan-emergency-and-i-Cover-Art.jpg"
+            id="emergency_and_i" style="display: none">
+    </div>
     <div>
       <input type="button" id="green" value="green">
       <input type="button" id="red" value="red">
@@ -27,10 +30,24 @@
       Size: <input type="range" min="5" max="40" value="10"id="sizeSlide"><br>
       Circle segments: <input type="range" min="4" max="30" value="10"id="segmentsSlide"><br>
     </div>
+    <div>
+      <h4>Emergency & I: 1999 album by The Dismemberment Plan</h4>
+      <input type="button" id="drawAlbum" value="draw album art">
+      <br>
+      <input type="button" id="referenceImage" value="show/hide reference image">
+      <br>
+      <input type="checkbox" id="drawLandscape" checked> Toggle landscape
+      <br>
+      <input type="checkbox" id="drawBackground" checked> Toggle background objects
+      <br>
+      <input type="checkbox" id="drawForeground" checked> Toggle subject
+      <br>
+      <input type="checkbox" id="drawInitials" checked> Toggle my initials
+    </div>
     <script src="lib/webgl-utils.js"></script>
     <script src="lib/webgl-debug.js"></script>
     <script src="lib/cuon-utils.js"></script>
-    <script src="ColoredPoints.js"></script>
+    <script src="asgn1.js"></script>
     <script src="Point.js"></script>
     <script src="Triangle.js"></script>
     <script src="Circle.js"></script>
