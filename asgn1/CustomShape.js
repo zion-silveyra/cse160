@@ -83,3 +83,46 @@ class CQuad {
     this.triangle2.render();
   }
 }
+
+class CCircle {
+  constructor(center, size, html_color) {
+    this.type="circle";
+    this.base_canvas_height=1500;
+    this.base_canvas_width=1500;
+    this.position=this.changeVerticesCoordinateSystem(center);
+    this.rgb = htmlToRGB(html_color);
+    this.size = size;
+    this.segments = 24;
+  }
+
+  changeVerticesCoordinateSystem(vertex) {
+    let x = 2*(vertex[0]/this.base_canvas_width) - 1;
+    let y = -(2*(vertex[1]/this.base_canvas_height) - 1);
+    //console.log(vertex, "->", x,y);
+    return [x,y];
+  }
+
+  render() {
+    var xy   = this.position;
+    var rgb = this.rgb;
+    var size = this.size;
+
+    gl.uniform4f(u_FragColor, rgb[0], rgb[1], rgb[2], 1.0);
+    
+    var d = size/200.0;
+
+    let angleStep = 360.0/this.segments;
+
+    for (var angle=0;angle<360;angle=angle+angleStep) {
+      let centerPt = [xy[0], xy[1]];
+      let angle1 = angle;
+      let angle2 = angle + angleStep;
+      let vec1 = [Math.cos(angle1*Math.PI/180)*d, Math.sin(angle1*Math.PI/180)*d];
+      let vec2 = [Math.cos(angle2*Math.PI/180)*d, Math.sin(angle2*Math.PI/180)*d];
+      let pt1 = [centerPt[0]+vec1[0], centerPt[1]+vec1[1]];
+      let pt2 = [centerPt[0]+vec2[0], centerPt[1]+vec2[1]];
+
+      drawTriangle( [xy[0], xy[1], pt1[0], pt1[1], pt2[0], pt2[1]] );
+    }
+  }
+}
