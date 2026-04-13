@@ -20,7 +20,7 @@ class CTriangle {
   changeVerticesCoordinateSystem(vertex) {
     let x = 2*(vertex[0]/this.base_canvas_width) - 1;
     let y = -(2*(vertex[1]/this.base_canvas_height) - 1);
-    console.log(vertex, "->", x,y);
+    //console.log(vertex, "->", x,y);
     return [x,y];
   }
 

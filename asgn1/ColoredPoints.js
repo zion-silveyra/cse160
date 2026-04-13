@@ -114,8 +114,8 @@ function main() {
 
   gl.clear(gl.COLOR_BUFFER_BIT);
 
-  myQ = new CQuad([400, 200], [500, 400], [450, 700], [200, 600], '77ccf1');
-  myQ.render();
+  let eandi = new EmergencyAndI();
+  eandi.render();
 }
 
 function click(ev) {
