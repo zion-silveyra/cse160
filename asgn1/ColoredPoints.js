@@ -28,6 +28,7 @@ let g_selectedSize = 10.0;
 var g_shapesList = [];
 var g_selectedShape = POINT;
 var g_selectedSegments = 10;
+var g_eandi;
 
 function addHTMLInputActions() {
   document.getElementById("green").onclick = function() {
@@ -63,6 +64,7 @@ function addHTMLInputActions() {
   });
   document.getElementById("segmentsSlide").addEventListener('mouseup', function() {
     g_selectedSegments = this.value;
+    g_eandi.render();
   });
 }
 
@@ -114,8 +116,8 @@ function main() {
 
   gl.clear(gl.COLOR_BUFFER_BIT);
 
-  let eandi = new EmergencyAndI();
-  eandi.render();
+  g_eandi = new EmergencyAndI();
+  g_eandi.render();
 }
 
 function click(ev) {

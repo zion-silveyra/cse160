@@ -85,14 +85,13 @@ class CQuad {
 }
 
 class CCircle {
-  constructor(center, size, html_color) {
+  constructor(center, size, html_color, circle_segments) {
     this.type="circle";
     this.base_canvas_height=1500;
     this.base_canvas_width=1500;
     this.position=this.changeVerticesCoordinateSystem(center);
     this.rgb = htmlToRGB(html_color);
     this.size = size;
-    this.segments = 24;
   }
 
   changeVerticesCoordinateSystem(vertex) {
@@ -111,7 +110,7 @@ class CCircle {
     
     var d = size/200.0;
 
-    let angleStep = 360.0/this.segments;
+    let angleStep = 360.0/g_selectedSegments;
 
     for (var angle=0;angle<360;angle=angle+angleStep) {
       let centerPt = [xy[0], xy[1]];
